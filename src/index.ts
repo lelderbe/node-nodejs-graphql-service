@@ -1,19 +1,19 @@
 import 'dotenv/config';
 import { ApolloServer } from 'apollo-server';
 import { genresTypeDefs } from './genres/genres.schema';
+import { artistsTypeDefs } from './artists/artists.schema';
 import { genresResolver } from './genres/genres.resolver';
+import { artistsResolver } from './artists/artists.resolver';
 import { GenreAPI } from './genres/genres.service';
+import { ArtistAPI } from './artists/artists.service';
 
 const server = new ApolloServer({
-	typeDefs: () => {
-		return {
-			...genresTypeDefs,
-		};
-	},
-	resolvers: [genresResolver],
+	typeDefs: [genresTypeDefs, artistsTypeDefs],
+	resolvers: [genresResolver, artistsResolver],
 	dataSources: () => {
 		return {
 			genresAPI: new GenreAPI(),
+			artistsAPI: new ArtistAPI(),
 		};
 	},
 });
