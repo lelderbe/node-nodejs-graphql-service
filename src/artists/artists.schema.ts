@@ -2,27 +2,27 @@ import { gql } from 'apollo-server';
 
 export const artistsTypeDefs = gql`
 	type Query {
-		"Query to get artists array"
-		artists: PaginatedArtists
+		artists(offset: Int, limit: Int): PaginatedArtists
 	}
 
-	"A genre"
 	type Artist {
-		_id: ID!
+		id: ID!
 		firstName: String
 		secondName: String
 		middleName: String
 		birthDate: String
 		birthPlace: String
 		country: String
-		bandsIds: [String]
+		bands: [Band]
+		#bandsIds: [String]
 		instruments: [String]
+		#instruments: String
 	}
 
 	type PaginatedArtists {
 		items: [Artist]
-		limit: Int
 		offset: Int
+		limit: Int
 		total: Int
 	}
 `;
