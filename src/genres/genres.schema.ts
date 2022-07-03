@@ -2,23 +2,47 @@ import { gql } from 'apollo-server';
 
 export const genresTypeDefs = gql`
 	type Query {
-		"Query to get genres array"
-		genres: PaginatedGenres
+		genre(id: ID!): Genre
+		genres(offset: Int, limit: Int): PaginatedGenres
 	}
 
-	"A genre"
-	type Genre {
-		_id: ID!
+	type Mutation {
+		createGenre(input: CreateGenreInput!): Genre
+		updateGenre(id: ID!, input: UpdateGenreInput): Genre
+		deleteGenre(id: ID!): DeleteResponse
+	}
+
+	input CreateGenreInput {
+		name: String!
+		description: String
+		country: String
+		year: Int
+	}
+
+	input UpdateGenreInput {
 		name: String
 		description: String
 		country: String
-		year: String
+		year: Int
+	}
+
+	type Genre {
+		id: ID!
+		name: String
+		description: String
+		country: String
+		year: Int
 	}
 
 	type PaginatedGenres {
 		items: [Genre]
-		limit: Int
 		offset: Int
+		limit: Int
 		total: Int
+	}
+
+	type DeleteResponse {
+		acknowledged: Boolean!
+		deletedCount: Int!
 	}
 `;

@@ -16,6 +16,9 @@ const server = new ApolloServer({
 			artistsAPI: new ArtistAPI(),
 		};
 	},
+	context: ({ req }) => ({
+		token: req.headers.authorization,
+	}),
 });
 
 server.listen().then(() => {
