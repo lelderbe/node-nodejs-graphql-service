@@ -1,15 +1,35 @@
 export const artistsResolver = {
 	Query: {
-		// returns an array of Artists
-		artists: (_, __, { dataSources }) => {
-			// console.log('artists');
-			return dataSources.artistsAPI.artists();
+		artist: (parent, { id }, { dataSources }) => {
+			return dataSources.artistsAPI.artist(id);
+		},
+
+		artists: (parent, { offset, limit }, { dataSources }) => {
+			return dataSources.artistsAPI.artists(offset, limit);
 		},
 	},
-	// Genre: {
-	// 	author: ({ authorId }, _, { dataSources }) => {
-	// 		console.log('author');
-	// 		return dataSources.trackAPI.getAuthor(authorId);
-	// 	},
-	// },
+
+	Mutation: {
+		createArtist: (parent, { input }, { dataSources }) => {
+			return dataSources.artistsAPI.createArtist(input);
+		},
+
+		updateArtist: (parent, { id, input }, { dataSources }) => {
+			return dataSources.artistsAPI.updateArtist(id, input);
+		},
+
+		deleteArtist: (parent, { id }, { dataSources }) => {
+			return dataSources.artistsAPI.deleteArtist(id);
+		},
+	},
+
+	Artist: {
+		id: (parent) => {
+			return parent._id;
+		},
+
+		bands: (parent, args, { dataSources }) => {
+			return parent.bandsIds.map((id) => dataSources.bandsAPI.band(id));
+		},
+	},
 };

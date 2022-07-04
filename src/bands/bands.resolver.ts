@@ -29,8 +29,7 @@ export const bandsResolver = {
 		},
 
 		members: (parent, args, { dataSources }) => {
-			// const result = parent.members.map((id) => dataSources.artistsAPI.artist(id));
-			// return result;
+			return parent.members.map((id) => dataSources.artistsAPI.artist(id));
 		},
 
 		genres: (parent, args, { dataSources }) => {

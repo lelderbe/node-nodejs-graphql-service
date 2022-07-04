@@ -2,7 +2,36 @@ import { gql } from 'apollo-server';
 
 export const artistsTypeDefs = gql`
 	type Query {
+		artist(id: ID!): Artist
 		artists(offset: Int, limit: Int): PaginatedArtists
+	}
+
+	type Mutation {
+		createArtist(input: CreateArtistInput!): Artist
+		updateArtist(id: ID!, input: UpdateArtistInput!): Artist
+		deleteArtist(id: ID!): DeleteResponse
+	}
+
+	input CreateArtistInput {
+		firstName: String!
+		secondName: String
+		middleName: String
+		birthDate: String
+		birthPlace: String
+		country: String
+		bandsIds: [String]
+		instruments: [String]
+	}
+
+	input UpdateArtistInput {
+		firstName: String
+		secondName: String
+		middleName: String
+		birthDate: String
+		birthPlace: String
+		country: String
+		bandsIds: [String]
+		instruments: [String]
 	}
 
 	type Artist {
@@ -14,9 +43,7 @@ export const artistsTypeDefs = gql`
 		birthPlace: String
 		country: String
 		bands: [Band]
-		#bandsIds: [String]
 		instruments: [String]
-		#instruments: String
 	}
 
 	type PaginatedArtists {
@@ -24,5 +51,10 @@ export const artistsTypeDefs = gql`
 		offset: Int
 		limit: Int
 		total: Int
+	}
+
+	type DeleteResponse {
+		acknowledged: Boolean!
+		deletedCount: Int!
 	}
 `;
