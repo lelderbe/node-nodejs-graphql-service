@@ -12,16 +12,38 @@ import { UsersAPI } from './users/users.service';
 import { bandsTypeDefs } from './bands/bands.schema';
 import { bandsResolver } from './bands/bands.resolver';
 import { BandsAPI } from './bands/bands.service';
+import { tracksTypeDefs } from './tracks/tracks.schema';
+import { tracksResolver } from './tracks/tracks.resolver';
+import { TracksAPI } from './tracks/tracks.service';
+import { albumsTypeDefs } from './albums/albums.schema';
+import { albumsResolver } from './albums/albums.resolver';
+import { AlbumsAPI } from './albums/albums.service';
 
 const server = new ApolloServer({
-	typeDefs: [genresTypeDefs, artistsTypeDefs, usersTypeDefs, bandsTypeDefs],
-	resolvers: [genresResolver, artistsResolver, usersResolver, bandsResolver],
+	typeDefs: [
+		genresTypeDefs,
+		artistsTypeDefs,
+		usersTypeDefs,
+		bandsTypeDefs,
+		tracksTypeDefs,
+		albumsTypeDefs,
+	],
+	resolvers: [
+		genresResolver,
+		artistsResolver,
+		usersResolver,
+		bandsResolver,
+		tracksResolver,
+		albumsResolver,
+	],
 	dataSources: () => {
 		return {
 			genresAPI: new GenreAPI(),
 			artistsAPI: new ArtistAPI(),
 			usersAPI: new UsersAPI(),
 			bandsAPI: new BandsAPI(),
+			tracksAPI: new TracksAPI(),
+			albumsAPI: new AlbumsAPI(),
 		};
 	},
 	context: ({ req }) => ({
