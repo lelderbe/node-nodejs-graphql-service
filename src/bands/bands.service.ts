@@ -8,26 +8,26 @@ export class BandsAPI extends RESTDataSource {
 		request.headers.set('Authorization', this.context.token);
 	}
 
-	create(input) {
+	createBand(input) {
 		return this.post(``, input);
 	}
 
-	find(offset = OFFSET, limit = LIMIT) {
+	bands(offset = OFFSET, limit = LIMIT) {
 		return this.get(``, {
 			offset,
 			limit,
 		});
 	}
 
-	findOne(id: string) {
+	band(id: string) {
 		return this.get(`/${encodeURIComponent(id)}`);
 	}
 
-	update(id: string, input) {
+	updateBand(id: string, input) {
 		return this.put(`/${encodeURIComponent(id)}`, input);
 	}
 
-	delete(id: string) {
+	deleteBand(id: string) {
 		return this.delete(`/${encodeURIComponent(id)}`);
 	}
 }
