@@ -29,7 +29,8 @@ export const tracksResolver = {
 		},
 
 		albums: (parent, args, { dataSources }) => {
-			return parent.albumId.map((id) => dataSources.albumsService.album(id));
+			return dataSources.albumsService.album(parent.albumId);
+			// return parent.albumId.map((id) => dataSources.albumsService.album(id));
 		},
 
 		bands: (parent, args, { dataSources }) => {

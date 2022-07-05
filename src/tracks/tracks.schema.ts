@@ -14,7 +14,7 @@ export const tracksTypeDefs = gql`
 
 	input CreateTrackInput {
 		title: String!
-		albumId: [String]!
+		albumId: String!
 		bandsIds: [String]
 		duration: Int
 		released: Int
@@ -23,7 +23,7 @@ export const tracksTypeDefs = gql`
 
 	input UpdateTrackInput {
 		title: String
-		albumId: [String]
+		albumId: String
 		bandsIds: [String]
 		duration: Int
 		released: Int
@@ -33,7 +33,8 @@ export const tracksTypeDefs = gql`
 	type Track {
 		id: ID!
 		title: String
-		albums: [Album]
+		albums: Album
+		#albums: [Album]
 		bands: [Band]
 		duration: Int
 		released: Int
