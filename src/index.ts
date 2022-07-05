@@ -22,6 +22,8 @@ import { AlbumsService } from './modules/albums/albums.service';
 import { favouritesTypeDefs } from './modules/favourites/favourites.schema';
 import { favouritesResolver } from './modules/favourites/favourites.resolver';
 import { FavouritesService } from './modules/favourites/favourites.service';
+import { membersTypeDefs } from './modules/members/members.schema';
+import { membersResolver } from './modules/members/members.resolver';
 
 const PORT = process.env.PORT || 4000;
 
@@ -35,6 +37,7 @@ const server = new ApolloServer({
 		tracksTypeDefs,
 		albumsTypeDefs,
 		favouritesTypeDefs,
+		membersTypeDefs,
 	],
 	resolvers: [
 		genresResolver,
@@ -44,6 +47,7 @@ const server = new ApolloServer({
 		tracksResolver,
 		albumsResolver,
 		favouritesResolver,
+		membersResolver,
 	],
 	dataSources: () => {
 		return {

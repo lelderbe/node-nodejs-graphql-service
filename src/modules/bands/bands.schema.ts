@@ -16,7 +16,7 @@ export const bandsTypeDefs = gql`
 		name: String!
 		origin: String
 		website: String
-		members: [ID]
+		members: [CreateMemberInput]
 		genresIds: [ID]
 	}
 
@@ -24,7 +24,7 @@ export const bandsTypeDefs = gql`
 		name: String
 		origin: String
 		website: String
-		members: [ID]
+		members: [CreateMemberInput]
 		genresIds: [ID]
 	}
 
@@ -32,7 +32,7 @@ export const bandsTypeDefs = gql`
 		id: ID!
 		name: String!
 		origin: String
-		members: [Artist]
+		members: [Member]
 		website: String
 		genres: [Genre]
 	}

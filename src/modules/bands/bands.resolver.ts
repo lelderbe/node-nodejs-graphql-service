@@ -30,8 +30,21 @@ export const bandsResolver = {
 			return parent._id;
 		},
 
-		members: (parent: Band, args, { dataSources }) => {
-			return parent.members.map((id) => dataSources.artistsService.findOne(id));
+		members: async (parent: Band, args, { dataSources }) => {
+			const { members } = parent;
+			return (
+				await Promise.all(
+					members.map((member) => {
+						return dataSources.artistsService.findOne(member.id);
+					}),
+				)
+			).map((artist, index) => {
+				return {
+					...artist,
+					instrument: members[index].instrument,
+					years: members[index].years,
+				};
+			});
 		},
 
 		genres: (parent: Band, args, { dataSources }) => {
