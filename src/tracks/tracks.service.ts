@@ -1,7 +1,7 @@
 import { RESTDataSource, RequestOptions } from 'apollo-datasource-rest';
 import { LIMIT, OFFSET } from '../app/constants';
 
-export class TracksAPI extends RESTDataSource {
+export class TracksService extends RESTDataSource {
 	baseURL = process.env.TRACKS_URL;
 
 	willSendRequest(request: RequestOptions) {

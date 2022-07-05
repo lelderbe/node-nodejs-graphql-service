@@ -1,25 +1,25 @@
 export const bandsResolver = {
 	Query: {
 		band: (parent, { id }, { dataSources }) => {
-			return dataSources.bandsAPI.band(id);
+			return dataSources.bandsService.band(id);
 		},
 
 		bands: async (parent, { offset, limit }, { dataSources }) => {
-			return dataSources.bandsAPI.bands(offset, limit);
+			return dataSources.bandsService.bands(offset, limit);
 		},
 	},
 
 	Mutation: {
 		createBand: (parent, { input }, { dataSources }) => {
-			return dataSources.bandsAPI.createBand(input);
+			return dataSources.bandsService.createBand(input);
 		},
 
 		updateBand: (parent, { id, input }, { dataSources }) => {
-			return dataSources.bandsAPI.updateBand(id, input);
+			return dataSources.bandsService.updateBand(id, input);
 		},
 
 		deleteBand: (parent, { id }, { dataSources }) => {
-			return dataSources.bandsAPI.deleteBand(id);
+			return dataSources.bandsService.deleteBand(id);
 		},
 	},
 
@@ -29,11 +29,11 @@ export const bandsResolver = {
 		},
 
 		members: (parent, args, { dataSources }) => {
-			return parent.members.map((id) => dataSources.artistsAPI.artist(id));
+			return parent.members.map((id) => dataSources.artistsService.artist(id));
 		},
 
 		genres: (parent, args, { dataSources }) => {
-			return parent.genresIds.map((id) => dataSources.genresAPI.genre(id));
+			return parent.genresIds.map((id) => dataSources.genresService.genre(id));
 		},
 	},
 };

@@ -22,6 +22,8 @@ export const bandsTypeDefs = gql`
 
 	input UpdateBandInput {
 		name: String
+		origin: String
+		website: String
 		members: [String]
 		genresIds: [String]
 	}

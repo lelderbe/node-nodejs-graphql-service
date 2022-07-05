@@ -1,25 +1,25 @@
 export const albumsResolver = {
 	Query: {
 		album: (parent, { id }, { dataSources }) => {
-			return dataSources.albumsAPI.album(id);
+			return dataSources.albumsService.album(id);
 		},
 
 		albums: async (parent, { offset, limit }, { dataSources }) => {
-			return dataSources.albumsAPI.albums(offset, limit);
+			return dataSources.albumsService.albums(offset, limit);
 		},
 	},
 
 	Mutation: {
 		createAlbum: (parent, { input }, { dataSources }) => {
-			return dataSources.albumsAPI.createAlbum(input);
+			return dataSources.albumsService.createAlbum(input);
 		},
 
 		updateAlbum: (parent, { id, input }, { dataSources }) => {
-			return dataSources.albumsAPI.updateAlbum(id, input);
+			return dataSources.albumsService.updateAlbum(id, input);
 		},
 
 		deleteAlbum: (parent, { id }, { dataSources }) => {
-			return dataSources.albumsAPI.deleteAlbum(id);
+			return dataSources.albumsService.deleteAlbum(id);
 		},
 	},
 
@@ -29,19 +29,19 @@ export const albumsResolver = {
 		},
 
 		artists: (parent, args, { dataSources }) => {
-			return parent.artistsIds.map((id) => dataSources.artistsAPI.artist(id));
+			return parent.artistsIds.map((id) => dataSources.artistsService.artist(id));
 		},
 
 		bands: (parent, args, { dataSources }) => {
-			return parent.bandsIds.map((id) => dataSources.bandsAPI.band(id));
+			return parent.bandsIds.map((id) => dataSources.bandsService.band(id));
 		},
 
 		tracks: (parent, args, { dataSources }) => {
-			return parent.trackIds.map((id) => dataSources.tracksAPI.track(id));
+			return parent.trackIds.map((id) => dataSources.tracksService.track(id));
 		},
 
 		genres: (parent, args, { dataSources }) => {
-			return parent.genresIds.map((id) => dataSources.genresAPI.genre(id));
+			return parent.genresIds.map((id) => dataSources.genresService.genre(id));
 		},
 	},
 };

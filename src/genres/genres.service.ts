@@ -3,7 +3,7 @@ import { LIMIT, OFFSET } from '../app/constants';
 import { CreateGenreInput } from './dto/create-genre.input';
 import { UpdateGenreInput } from './dto/update-genre.input';
 
-export class GenreAPI extends RESTDataSource {
+export class GenresService extends RESTDataSource {
 	baseURL = process.env.GENRES_URL;
 
 	willSendRequest(request: RequestOptions) {

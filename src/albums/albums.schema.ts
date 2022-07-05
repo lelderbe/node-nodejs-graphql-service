@@ -8,7 +8,7 @@ export const albumsTypeDefs = gql`
 
 	type Mutation {
 		createAlbum(input: CreateAlbumInput!): Album
-		updateAlbum(id: ID!, input: UpdateAlbumInput): Album
+		updateAlbum(id: ID!, input: UpdateAlbumInput!): Album
 		deleteAlbum(id: ID!): DeleteResponse
 	}
 

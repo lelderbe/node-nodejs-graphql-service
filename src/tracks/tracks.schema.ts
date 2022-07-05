@@ -8,7 +8,7 @@ export const tracksTypeDefs = gql`
 
 	type Mutation {
 		createTrack(input: CreateTrackInput!): Track
-		updateTrack(id: ID!, input: UpdateTrackInput): Track
+		updateTrack(id: ID!, input: UpdateTrackInput!): Track
 		deleteTrack(id: ID!): DeleteResponse
 	}
 

@@ -1,6 +1,6 @@
 import { RESTDataSource, RequestOptions } from 'apollo-datasource-rest';
 
-export class UsersAPI extends RESTDataSource {
+export class UsersService extends RESTDataSource {
 	baseURL = process.env.USERS_URL;
 
 	willSendRequest(request: RequestOptions) {

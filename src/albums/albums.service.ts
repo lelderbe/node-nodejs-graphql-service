@@ -1,7 +1,7 @@
 import { RESTDataSource, RequestOptions } from 'apollo-datasource-rest';
 import { LIMIT, OFFSET } from '../app/constants';
 
-export class AlbumsAPI extends RESTDataSource {
+export class AlbumsService extends RESTDataSource {
 	baseURL = process.env.ALBUMS_URL;
 
 	willSendRequest(request: RequestOptions) {

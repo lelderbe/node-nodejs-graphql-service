@@ -1,25 +1,25 @@
 export const genresResolver = {
 	Query: {
 		genre: (parent, { id }, { dataSources }) => {
-			return dataSources.genresAPI.genre(id);
+			return dataSources.genresService.genre(id);
 		},
 
-		genres: async (parent, args, { dataSources }) => {
-			return dataSources.genresAPI.genres(args.offset, args.limit);
+		genres: async (parent, { offset, limit }, { dataSources }) => {
+			return dataSources.genresService.genres(offset, limit);
 		},
 	},
 
 	Mutation: {
 		createGenre: (parent, { input }, { dataSources }) => {
-			return dataSources.genresAPI.createGenre(input);
+			return dataSources.genresService.createGenre(input);
 		},
 
 		updateGenre: (parent, { id, input }, { dataSources }) => {
-			return dataSources.genresAPI.updateGenre(id, input);
+			return dataSources.genresService.updateGenre(id, input);
 		},
 
 		deleteGenre: (parent, { id }, { dataSources }) => {
-			return dataSources.genresAPI.deleteGenre(id);
+			return dataSources.genresService.deleteGenre(id);
 		},
 	},
 
