@@ -1,3 +1,5 @@
+import { Favourites } from './favourites.interface';
+
 export const favouritesResolver = {
 	Query: {
 		getAll: (parent, args, { dataSources }) => {
@@ -28,24 +30,24 @@ export const favouritesResolver = {
 	},
 
 	Favourites: {
-		id: (parent) => {
+		id: (parent: Favourites) => {
 			return parent._id;
 		},
 
-		bands: (parent, args, { dataSources }) => {
-			return parent.bandsIds.map((id) => dataSources.bandsService.band(id));
+		bands: (parent: Favourites, args, { dataSources }) => {
+			return parent.bandsIds?.map((id) => dataSources.bandsService.findOne(id));
 		},
 
-		genres: (parent, args, { dataSources }) => {
-			return parent.genresIds.map((id) => dataSources.genresService.genre(id));
+		genres: (parent: Favourites, args, { dataSources }) => {
+			return parent.genresIds?.map((id) => dataSources.genresService.findOne(id));
 		},
 
-		artists: (parent, args, { dataSources }) => {
-			return parent.artistsIds.map((id) => dataSources.artistsService.artist(id));
+		artists: (parent: Favourites, args, { dataSources }) => {
+			return parent.artistsIds?.map((id) => dataSources.artistsService.findOne(id));
 		},
 
-		tracks: (parent, args, { dataSources }) => {
-			return parent.tracksIds.map((id) => dataSources.tracksService.track(id));
+		tracks: (parent: Favourites, args, { dataSources }) => {
+			return parent.tracksIds?.map((id) => dataSources.tracksService.findOne(id));
 		},
 	},
 };

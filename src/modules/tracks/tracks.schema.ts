@@ -14,7 +14,7 @@ export const tracksTypeDefs = gql`
 
 	input CreateTrackInput {
 		title: String!
-		albumId: String!
+		albumId: String
 		bandsIds: [String]
 		duration: Int
 		released: Int
@@ -32,7 +32,7 @@ export const tracksTypeDefs = gql`
 
 	type Track {
 		id: ID!
-		title: String
+		title: String!
 		albums: Album
 		#albums: [Album]
 		bands: [Band]
@@ -42,14 +42,9 @@ export const tracksTypeDefs = gql`
 	}
 
 	type PaginatedTracks {
-		items: [Track]
-		offset: Int
-		limit: Int
-		total: Int
-	}
-
-	type DeleteResponse {
-		acknowledged: Boolean!
-		deletedCount: Int!
+		items: [Track]!
+		offset: Int!
+		limit: Int!
+		total: Int!
 	}
 `;

@@ -16,21 +16,21 @@ export const bandsTypeDefs = gql`
 		name: String!
 		origin: String
 		website: String
-		members: [String]
-		genresIds: [String]
+		members: [ID]
+		genresIds: [ID]
 	}
 
 	input UpdateBandInput {
 		name: String
 		origin: String
 		website: String
-		members: [String]
-		genresIds: [String]
+		members: [ID]
+		genresIds: [ID]
 	}
 
 	type Band {
 		id: ID!
-		name: String
+		name: String!
 		origin: String
 		members: [Artist]
 		website: String
@@ -38,14 +38,9 @@ export const bandsTypeDefs = gql`
 	}
 
 	type PaginatedBands {
-		items: [Band]
-		offset: Int
-		limit: Int
-		total: Int
-	}
-
-	type DeleteResponse {
-		acknowledged: Boolean!
-		deletedCount: Int!
+		items: [Band]!
+		offset: Int!
+		limit: Int!
+		total: Int!
 	}
 `;

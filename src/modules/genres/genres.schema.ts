@@ -28,21 +28,16 @@ export const genresTypeDefs = gql`
 
 	type Genre {
 		id: ID!
-		name: String
+		name: String!
 		description: String
 		country: String
 		year: Int
 	}
 
 	type PaginatedGenres {
-		items: [Genre]
-		offset: Int
-		limit: Int
-		total: Int
-	}
-
-	type DeleteResponse {
-		acknowledged: Boolean!
-		deletedCount: Int!
+		items: [Genre]!
+		offset: Int!
+		limit: Int!
+		total: Int!
 	}
 `;

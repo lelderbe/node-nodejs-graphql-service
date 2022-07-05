@@ -15,16 +15,16 @@ export const usersTypeDefs = gql`
 		lastName: String!
 		password: String!
 		email: String!
-		#favouriteArtistIds: [String]
+		favouriteArtistIds: [String]
 	}
 
 	type User {
 		id: ID!
-		firstName: String
-		lastName: String
-		password: String
+		firstName: String!
+		lastName: String!
+		password: String!
 		email: String!
-		#favouriteArtistIds: [String]
+		favouriteArtistIds: [String]
 	}
 
 	type JWT {

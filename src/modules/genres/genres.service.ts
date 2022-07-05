@@ -1,5 +1,5 @@
 import { RESTDataSource, RequestOptions } from 'apollo-datasource-rest';
-import { LIMIT, OFFSET } from '../app/constants';
+import { LIMIT, OFFSET } from '../../common/constants';
 import { CreateGenreInput } from './dto/create-genre.input';
 import { UpdateGenreInput } from './dto/update-genre.input';
 
@@ -8,27 +8,28 @@ export class GenresService extends RESTDataSource {
 
 	willSendRequest(request: RequestOptions) {
 		request.headers.set('Authorization', this.context.token);
-		// request.params.set('offset', String(OFFSET));
-		// request.params.set('limit', '2');
 	}
 
-	createGenre(input: CreateGenreInput) {
-		return this.post(``, input);
+	async createGenre(input: CreateGenreInput) {
+		const genre = await this.post(``, input);
+		return genre ? genre : null;
 	}
 
-	genres(offset = OFFSET, limit = LIMIT) {
+	findAll(offset = OFFSET, limit = LIMIT) {
 		return this.get(``, {
 			offset,
 			limit,
 		});
 	}
 
-	genre(id: string) {
-		return this.get(`/${encodeURIComponent(id)}`);
+	async findOne(id: string) {
+		const genre = await this.get(`/${encodeURIComponent(id)}`);
+		return genre ? genre : null;
 	}
 
-	updateGenre(id: string, input: UpdateGenreInput) {
-		return this.put(`/${encodeURIComponent(id)}`, input);
+	async updateGenre(id: string, input: UpdateGenreInput) {
+		const genre = await this.put(`/${encodeURIComponent(id)}`, input);
+		return genre ? genre : null;
 	}
 
 	deleteGenre(id: string) {

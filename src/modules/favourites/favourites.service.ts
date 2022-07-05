@@ -1,4 +1,5 @@
 import { RESTDataSource, RequestOptions } from 'apollo-datasource-rest';
+import { Favourites } from './favourites.interface';
 
 export class FavouritesService extends RESTDataSource {
 	baseURL = process.env.FAVOURITES_URL;
@@ -8,10 +9,14 @@ export class FavouritesService extends RESTDataSource {
 	}
 
 	addToFavourites(input) {
-		return this.put(`/add`, input);
+		return this.put<Favourites>(`/add`, input);
 	}
 
-	getAll() {
-		return this.get(``);
+	async getAll() {
+		const data = await this.get<Favourites>(``);
+		if (!data) {
+			throw new Error('No favourites yet');
+		}
+		return data;
 	}
 }

@@ -34,7 +34,7 @@ export const albumsTypeDefs = gql`
 
 	type Album {
 		id: ID!
-		name: String
+		name: String!
 		released: Int
 		artists: [Artist]
 		bands: [Band]
@@ -44,14 +44,9 @@ export const albumsTypeDefs = gql`
 	}
 
 	type PaginatedAlbums {
-		items: [Album]
-		offset: Int
-		limit: Int
-		total: Int
-	}
-
-	type DeleteResponse {
-		acknowledged: Boolean!
-		deletedCount: Int!
+		items: [Album]!
+		offset: Int!
+		limit: Int!
+		total: Int!
 	}
 `;

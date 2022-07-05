@@ -1,11 +1,13 @@
+import { Artist } from './artist.interface';
+
 export const artistsResolver = {
 	Query: {
 		artist: (parent, { id }, { dataSources }) => {
-			return dataSources.artistsService.artist(id);
+			return dataSources.artistsService.findOne(id);
 		},
 
 		artists: (parent, { offset, limit }, { dataSources }) => {
-			return dataSources.artistsService.artists(offset, limit);
+			return dataSources.artistsService.findAll(offset, limit);
 		},
 	},
 
@@ -24,12 +26,12 @@ export const artistsResolver = {
 	},
 
 	Artist: {
-		id: (parent) => {
+		id: (parent: Artist) => {
 			return parent._id;
 		},
 
-		bands: (parent, args, { dataSources }) => {
-			return parent.bandsIds.map((id) => dataSources.bandsService.band(id));
+		bands: (parent: Artist, args, { dataSources }) => {
+			return parent.bandsIds.map((id) => dataSources.bandsService.findOne(id));
 		},
 	},
 };

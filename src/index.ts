@@ -1,31 +1,33 @@
 import 'dotenv/config';
 import { ApolloServer } from 'apollo-server';
-import { genresTypeDefs } from './genres/genres.schema';
-import { genresResolver } from './genres/genres.resolver';
-import { GenresService } from './genres/genres.service';
-import { artistsTypeDefs } from './artists/artists.schema';
-import { artistsResolver } from './artists/artists.resolver';
-import { ArtistsService } from './artists/artists.service';
-import { usersTypeDefs } from './users/users.schema';
-import { usersResolver } from './users/users.resolver';
-import { UsersService } from './users/users.service';
-import { bandsTypeDefs } from './bands/bands.schema';
-import { bandsResolver } from './bands/bands.resolver';
-import { BandsService } from './bands/bands.service';
-import { tracksTypeDefs } from './tracks/tracks.schema';
-import { tracksResolver } from './tracks/tracks.resolver';
-import { TracksService } from './tracks/tracks.service';
-import { albumsTypeDefs } from './albums/albums.schema';
-import { albumsResolver } from './albums/albums.resolver';
-import { AlbumsService } from './albums/albums.service';
-import { favouritesTypeDefs } from './favourites/favourites.schema';
-import { favouritesResolver } from './favourites/favourites.resolver';
-import { FavouritesService } from './favourites/favourites.service';
+import { baseTypeDefs } from './common/base.schema';
+import { genresTypeDefs } from './modules/genres/genres.schema';
+import { genresResolver } from './modules/genres/genres.resolver';
+import { GenresService } from './modules/genres/genres.service';
+import { artistsTypeDefs } from './modules/artists/artists.schema';
+import { artistsResolver } from './modules/artists/artists.resolver';
+import { ArtistsService } from './modules/artists/artists.service';
+import { usersTypeDefs } from './modules/users/users.schema';
+import { usersResolver } from './modules/users/users.resolver';
+import { UsersService } from './modules/users/users.service';
+import { bandsTypeDefs } from './modules/bands/bands.schema';
+import { bandsResolver } from './modules/bands/bands.resolver';
+import { BandsService } from './modules/bands/bands.service';
+import { tracksTypeDefs } from './modules/tracks/tracks.schema';
+import { tracksResolver } from './modules/tracks/tracks.resolver';
+import { TracksService } from './modules/tracks/tracks.service';
+import { albumsTypeDefs } from './modules/albums/albums.schema';
+import { albumsResolver } from './modules/albums/albums.resolver';
+import { AlbumsService } from './modules/albums/albums.service';
+import { favouritesTypeDefs } from './modules/favourites/favourites.schema';
+import { favouritesResolver } from './modules/favourites/favourites.resolver';
+import { FavouritesService } from './modules/favourites/favourites.service';
 
 const PORT = process.env.PORT || 4000;
 
 const server = new ApolloServer({
 	typeDefs: [
+		baseTypeDefs,
 		genresTypeDefs,
 		artistsTypeDefs,
 		usersTypeDefs,

@@ -1,11 +1,13 @@
+import { Genre } from './genre.interface';
+
 export const genresResolver = {
 	Query: {
 		genre: (parent, { id }, { dataSources }) => {
-			return dataSources.genresService.genre(id);
+			return dataSources.genresService.findOne(id);
 		},
 
 		genres: async (parent, { offset, limit }, { dataSources }) => {
-			return dataSources.genresService.genres(offset, limit);
+			return dataSources.genresService.findAll(offset, limit);
 		},
 	},
 
@@ -24,7 +26,7 @@ export const genresResolver = {
 	},
 
 	Genre: {
-		id: (parent) => {
+		id: (parent: Genre) => {
 			return parent._id;
 		},
 	},

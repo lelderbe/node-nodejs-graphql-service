@@ -14,7 +14,7 @@ export const artistsTypeDefs = gql`
 
 	input CreateArtistInput {
 		firstName: String!
-		secondName: String
+		secondName: String!
 		middleName: String
 		birthDate: String
 		birthPlace: String
@@ -36,8 +36,8 @@ export const artistsTypeDefs = gql`
 
 	type Artist {
 		id: ID!
-		firstName: String
-		secondName: String
+		firstName: String!
+		secondName: String!
 		middleName: String
 		birthDate: String
 		birthPlace: String
@@ -47,14 +47,9 @@ export const artistsTypeDefs = gql`
 	}
 
 	type PaginatedArtists {
-		items: [Artist]
-		offset: Int
-		limit: Int
-		total: Int
-	}
-
-	type DeleteResponse {
-		acknowledged: Boolean!
-		deletedCount: Int!
+		items: [Artist]!
+		offset: Int!
+		limit: Int!
+		total: Int!
 	}
 `;

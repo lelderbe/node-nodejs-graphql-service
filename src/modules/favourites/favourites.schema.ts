@@ -6,10 +6,10 @@ export const favouritesTypeDefs = gql`
 	}
 
 	type Mutation {
-		addTrackToFavourites(id: String!): Favourites
-		addBandToFavourites(id: String!): Favourites
-		addArtistToFavourites(id: String!): Favourites
-		addGenreToFavourites(id: String!): Favourites
+		addTrackToFavourites(id: ID!): Favourites
+		addBandToFavourites(id: ID!): Favourites
+		addArtistToFavourites(id: ID!): Favourites
+		addGenreToFavourites(id: ID!): Favourites
 	}
 
 	type Favourites {
