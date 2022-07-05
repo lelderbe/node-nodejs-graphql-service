@@ -18,6 +18,11 @@ import { TracksService } from './tracks/tracks.service';
 import { albumsTypeDefs } from './albums/albums.schema';
 import { albumsResolver } from './albums/albums.resolver';
 import { AlbumsService } from './albums/albums.service';
+import { favouritesTypeDefs } from './favourites/favourites.schema';
+import { favouritesResolver } from './favourites/favourites.resolver';
+import { FavouritesService } from './favourites/favourites.service';
+
+const PORT = process.env.PORT || 4000;
 
 const server = new ApolloServer({
 	typeDefs: [
@@ -27,6 +32,7 @@ const server = new ApolloServer({
 		bandsTypeDefs,
 		tracksTypeDefs,
 		albumsTypeDefs,
+		favouritesTypeDefs,
 	],
 	resolvers: [
 		genresResolver,
@@ -35,6 +41,7 @@ const server = new ApolloServer({
 		bandsResolver,
 		tracksResolver,
 		albumsResolver,
+		favouritesResolver,
 	],
 	dataSources: () => {
 		return {
@@ -44,6 +51,7 @@ const server = new ApolloServer({
 			bandsService: new BandsService(),
 			tracksService: new TracksService(),
 			albumsService: new AlbumsService(),
+			favouritesService: new FavouritesService(),
 		};
 	},
 	context: ({ req }) => ({
@@ -51,10 +59,10 @@ const server = new ApolloServer({
 	}),
 });
 
-server.listen().then(() => {
+server.listen(PORT).then(() => {
 	console.log(`
 		🚀  Server is running!
-		🔉  Listening on port 4000
-		📭  Query at http://localhost:4000/
+		🔉  Listening on port ${PORT}
+		📭  Query at http://localhost:${PORT}/
     `);
 });
