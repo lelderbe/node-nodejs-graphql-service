@@ -15,7 +15,6 @@ export const usersTypeDefs = gql`
 		lastName: String!
 		password: String!
 		email: String!
-		favouriteArtistIds: [String]
 	}
 
 	type User {
@@ -24,7 +23,6 @@ export const usersTypeDefs = gql`
 		lastName: String!
 		password: String!
 		email: String!
-		favouriteArtistIds: [String]
 	}
 
 	type JWT {

@@ -15,20 +15,20 @@ export const albumsTypeDefs = gql`
 	input CreateAlbumInput {
 		name: String!
 		released: Int
-		artistsIds: [String]
-		bandsIds: [String]
-		trackIds: [String]
-		genresIds: [String]
+		artistsIds: [ID]
+		bandsIds: [ID]
+		trackIds: [ID]
+		genresIds: [ID]
 		image: String
 	}
 
 	input UpdateAlbumInput {
 		name: String
 		released: Int
-		artistsIds: [String]
-		bandsIds: [String]
-		trackIds: [String]
-		genresIds: [String]
+		artistsIds: [ID]
+		bandsIds: [ID]
+		trackIds: [ID]
+		genresIds: [ID]
 		image: String
 	}
 

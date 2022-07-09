@@ -65,7 +65,7 @@ const server = new ApolloServer({
 	}),
 });
 
-server.listen(PORT).then(() => {
+server.listen(PORT, () => {
 	console.log(`
 		🚀  Server is running!
 		🔉  Listening on port ${PORT}

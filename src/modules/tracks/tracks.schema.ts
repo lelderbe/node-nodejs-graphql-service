@@ -14,20 +14,20 @@ export const tracksTypeDefs = gql`
 
 	input CreateTrackInput {
 		title: String!
-		albumId: String
-		bandsIds: [String]
+		albumId: ID
+		bandsIds: [ID]
 		duration: Int
 		released: Int
-		genresIds: [String]
+		genresIds: [ID]
 	}
 
 	input UpdateTrackInput {
 		title: String
-		albumId: String
-		bandsIds: [String]
+		albumId: ID
+		bandsIds: [ID]
 		duration: Int
 		released: Int
-		genresIds: [String]
+		genresIds: [ID]
 	}
 
 	type Track {

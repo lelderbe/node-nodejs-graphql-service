@@ -2,7 +2,7 @@ import { Favourites } from './favourites.interface';
 
 export const favouritesResolver = {
 	Query: {
-		getAll: (parent, args, { dataSources }) => {
+		favourites: (parent, args, { dataSources }) => {
 			return dataSources.favouritesService.getAll();
 		},
 	},

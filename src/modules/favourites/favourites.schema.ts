@@ -2,7 +2,7 @@ import { gql } from 'apollo-server';
 
 export const favouritesTypeDefs = gql`
 	type Query {
-		getAll: Favourites
+		favourites: Favourites
 	}
 
 	type Mutation {

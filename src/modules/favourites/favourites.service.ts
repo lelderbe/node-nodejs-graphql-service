@@ -13,10 +13,7 @@ export class FavouritesService extends RESTDataSource {
 	}
 
 	async getAll() {
-		const data = await this.get<Favourites>(``);
-		if (!data) {
-			throw new Error('No favourites yet');
-		}
-		return data;
+		const favourites = await this.get<Favourites>(``);
+		return favourites ? favourites : null;
 	}
 }
