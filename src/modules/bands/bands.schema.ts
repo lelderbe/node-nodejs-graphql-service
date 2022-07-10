@@ -3,7 +3,7 @@ import { gql } from 'apollo-server';
 export const bandsTypeDefs = gql`
 	type Query {
 		band(id: ID!): Band
-		bands(offset: Int, limit: Int): PaginatedBands
+		bands(offset: Int, limit: Int, filter: FilterBandInput): PaginatedBands
 	}
 
 	type Mutation {
@@ -26,6 +26,12 @@ export const bandsTypeDefs = gql`
 		website: String
 		members: [CreateMemberInput]
 		genresIds: [ID]
+	}
+
+	input FilterBandInput {
+		name: String
+		origin: String
+		website: String
 	}
 
 	type Band {

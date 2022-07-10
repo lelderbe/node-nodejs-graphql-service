@@ -6,8 +6,8 @@ export const genresResolver = {
 			return dataSources.genresService.findOne(id);
 		},
 
-		genres: async (parent, { offset, limit }, { dataSources }) => {
-			return dataSources.genresService.findAll(offset, limit);
+		genres: async (parent, args, { dataSources }) => {
+			return dataSources.genresService.findAll(args);
 		},
 	},
 

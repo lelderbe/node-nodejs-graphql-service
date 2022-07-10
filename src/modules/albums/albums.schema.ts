@@ -3,7 +3,7 @@ import { gql } from 'apollo-server';
 export const albumsTypeDefs = gql`
 	type Query {
 		album(id: ID!): Album
-		albums(offset: Int, limit: Int): PaginatedAlbums
+		albums(offset: Int, limit: Int, filter: FilterAlbumInput): PaginatedAlbums
 	}
 
 	type Mutation {
@@ -30,6 +30,11 @@ export const albumsTypeDefs = gql`
 		trackIds: [ID]
 		genresIds: [ID]
 		image: String
+	}
+
+	input FilterAlbumInput {
+		name: String
+		released: Int
 	}
 
 	type Album {

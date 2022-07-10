@@ -6,8 +6,8 @@ export const bandsResolver = {
 			return dataSources.bandsService.findOne(id);
 		},
 
-		bands: async (parent, { offset, limit }, { dataSources }) => {
-			return dataSources.bandsService.findAll(offset, limit);
+		bands: async (parent, args, { dataSources }) => {
+			return dataSources.bandsService.findAll(args);
 		},
 	},
 
@@ -38,13 +38,15 @@ export const bandsResolver = {
 						return dataSources.artistsService.findOne(member.id);
 					}),
 				)
-			).map((artist, index) => {
-				return {
-					...artist,
-					instrument: members[index].instrument,
-					years: members[index].years,
-				};
-			});
+			)
+				.filter(Boolean)
+				.map((artist, index) => {
+					return {
+						...artist,
+						instrument: members[index].instrument,
+						years: members[index].years,
+					};
+				});
 		},
 
 		genres: (parent: Band, args, { dataSources }) => {

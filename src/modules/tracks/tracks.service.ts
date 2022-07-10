@@ -13,10 +13,11 @@ export class TracksService extends RESTDataSource {
 		return track ? track : null;
 	}
 
-	findAll(offset = OFFSET, limit = LIMIT) {
+	findAll({ offset = OFFSET, limit = LIMIT, filter }) {
 		return this.get(``, {
 			offset,
 			limit,
+			...filter,
 		});
 	}
 

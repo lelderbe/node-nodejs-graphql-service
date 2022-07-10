@@ -13,10 +13,11 @@ export class BandsService extends RESTDataSource {
 		return band ? band : null;
 	}
 
-	findAll(offset = OFFSET, limit = LIMIT) {
+	findAll({ offset = OFFSET, limit = LIMIT, filter }) {
 		return this.get(``, {
 			offset,
 			limit,
+			...filter,
 		});
 	}
 

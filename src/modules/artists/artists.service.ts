@@ -13,10 +13,11 @@ export class ArtistsService extends RESTDataSource {
 		return artist ? artist : null;
 	}
 
-	findAll(offset = OFFSET, limit = LIMIT) {
+	findAll({ offset = OFFSET, limit = LIMIT, filter }) {
 		return this.get(``, {
 			offset,
 			limit,
+			...filter,
 		});
 	}
 

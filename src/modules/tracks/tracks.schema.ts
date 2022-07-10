@@ -3,7 +3,7 @@ import { gql } from 'apollo-server';
 export const tracksTypeDefs = gql`
 	type Query {
 		track(id: ID!): Track
-		tracks(offset: Int, limit: Int): PaginatedTracks
+		tracks(offset: Int, limit: Int, filter: FilterTrackInput): PaginatedTracks
 	}
 
 	type Mutation {
@@ -28,6 +28,13 @@ export const tracksTypeDefs = gql`
 		duration: Int
 		released: Int
 		genresIds: [ID]
+	}
+
+	input FilterTrackInput {
+		title: String
+		albumId: ID
+		duration: Int
+		released: Int
 	}
 
 	type Track {

@@ -6,8 +6,8 @@ export const albumsResolver = {
 			return dataSources.albumsService.findOne(id);
 		},
 
-		albums: async (parent, { offset, limit }, { dataSources }) => {
-			return dataSources.albumsService.findAll(offset, limit);
+		albums: async (parent, args, { dataSources }) => {
+			return dataSources.albumsService.findAll(args);
 		},
 	},
 

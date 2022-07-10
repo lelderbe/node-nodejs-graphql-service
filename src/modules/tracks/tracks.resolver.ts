@@ -6,8 +6,8 @@ export const tracksResolver = {
 			return dataSources.tracksService.findOne(id);
 		},
 
-		tracks: async (parent, { offset, limit }, { dataSources }) => {
-			return dataSources.tracksService.findAll(offset, limit);
+		tracks: async (parent, args, { dataSources }) => {
+			return dataSources.tracksService.findAll(args);
 		},
 	},
 

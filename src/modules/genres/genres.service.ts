@@ -15,10 +15,11 @@ export class GenresService extends RESTDataSource {
 		return genre ? genre : null;
 	}
 
-	findAll(offset = OFFSET, limit = LIMIT) {
+	findAll({ offset = OFFSET, limit = LIMIT, filter }) {
 		return this.get(``, {
 			offset,
 			limit,
+			...filter,
 		});
 	}
 

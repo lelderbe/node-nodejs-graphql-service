@@ -3,7 +3,7 @@ import { gql } from 'apollo-server';
 export const genresTypeDefs = gql`
 	type Query {
 		genre(id: ID!): Genre
-		genres(offset: Int, limit: Int): PaginatedGenres
+		genres(offset: Int, limit: Int, filter: FilterGenreInput): PaginatedGenres
 	}
 
 	type Mutation {
@@ -20,6 +20,13 @@ export const genresTypeDefs = gql`
 	}
 
 	input UpdateGenreInput {
+		name: String
+		description: String
+		country: String
+		year: Int
+	}
+
+	input FilterGenreInput {
 		name: String
 		description: String
 		country: String

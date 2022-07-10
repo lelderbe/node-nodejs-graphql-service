@@ -6,8 +6,8 @@ export const artistsResolver = {
 			return dataSources.artistsService.findOne(id);
 		},
 
-		artists: (parent, { offset, limit }, { dataSources }) => {
-			return dataSources.artistsService.findAll(offset, limit);
+		artists: (parent, args, { dataSources }) => {
+			return dataSources.artistsService.findAll(args);
 		},
 	},
 
