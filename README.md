@@ -2,7 +2,7 @@
 
 ![image](https://user-images.githubusercontent.com/29270751/178095914-81b7cd0d-3cde-4e57-b7dd-d3594e0c3244.png)
 
-This is a GraphQL service for ["Musicify microservices"](https://github.com/rolling-scopes-school/node-graphql-service) project, which can be used as one point for all client request. It handles client requests and retrieves data from several underlying microservices.
+This is a GraphQL service for ["Musicify microservices"](https://github.com/rolling-scopes-school/node-graphql-service) project, which can be used as one point for all client requests. It handles client requests and retrieves data from several underlying microservices.
 
 Task is [here](https://github.com/AlreadyBored/nodejs-assignments/blob/main/assignments/graphql-service/assignment.md).
 
