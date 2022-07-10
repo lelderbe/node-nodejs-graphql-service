@@ -14,7 +14,7 @@ export const favouritesTypeDefs = gql`
 
 	type Favourites {
 		id: ID!
-		userId: ID
+		userId: ID!
 		bands: [Band]
 		genres: [Genre]
 		artists: [Artist]
